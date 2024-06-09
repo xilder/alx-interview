@@ -3,6 +3,7 @@
 
 
 def canUnlockAll(boxes):
+    """function to check if all boxes can be opened"""
     my_set = {0}
     my_keys = boxes[0]
     
