@@ -8,7 +8,7 @@ import sys
 
 def print_log(codes, file_size):
     """prints log stored"""
-    print(f"File size{file_size}")
+    print(f"File size: {file_size}")
     for code, freq in codes.items():
         print(f"{code}: {freq}")
 
@@ -19,18 +19,21 @@ def parse_log():
     i = 0
     file_size = 0
     try:
-        for line in sys.stdin():
+        for line in sys.stdin:
             i += 1
             intel = line.split(" ")
             try:
-                code = int(intel[-2])
+                code = (intel[-2])
                 size = int(intel[-1])
-                codes[code] = codes.get(code, 0) + 1
-                file_size += int(size)
+                if len(code) == 3:
+                    code = int(code)
+                    codes[code] = codes.get(code, 0) + 1
+                    file_size += int(size)
             except (IndexError, ValueError):
                 pass
             if i == 10:
                 print_log(codes, file_size)
+                i = 0
     except KeyboardInterrupt:
         print_log(codes, file_size)
 
