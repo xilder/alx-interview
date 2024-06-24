@@ -9,8 +9,9 @@ import sys
 def print_log(codes, file_size):
     """prints log stored"""
     print(f"File size: {file_size}")
-    for code, freq in codes.items():
-        print(f"{code}: {freq}")
+    sorted_keys = sorted(codes.keys())
+    for key in sorted_keys:
+        print(f"{key}: {codes[key]}")
 
 
 def parse_log():
