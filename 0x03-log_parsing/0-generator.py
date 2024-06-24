@@ -1,43 +1,15 @@
 #!/usr/bin/python3
-"""
-log_parsing exercise
-"""
-import re
+import random
 import sys
+from time import sleep
+import datetime
 
-
-def print_log(codes, file_size):
-    """prints log stored"""
-    print(f"File size: {file_size}")
-    sorted_keys = sorted(codes.keys())
-    for key in sorted_keys:
-        print(f"{key}: {codes[key]}")
-
-
-def parse_log():
-    """parses log from stdin"""
-    codes = {}
-    i = 0
-    file_size = 0
-    try:
-        for line in sys.stdin:
-            i += 1
-            intel = line.split(" ")
-            try:
-                code = (intel[-2])
-                size = int(intel[-1])
-                if len(code) == 3:
-                    code = int(code)
-                    codes[code] = codes.get(code, 0) + 1
-                    file_size += int(size)
-            except (IndexError, ValueError):
-                pass
-            if i == 10:
-                print_log(codes, file_size)
-                i = 0
-    except KeyboardInterrupt:
-        print_log(codes, file_size)
-
-
-if __name__ == "__main__":
-    parse_log()
+for i in range(10000):
+    sleep(random.random())
+    sys.stdout.write("{:d}.{:d}.{:d}.{:d} - [{}] \"GET /projects/260 HTTP/1.1\" {} {}\n".format(
+        random.randint(1, 255), random.randint(1, 255), random.randint(1, 255), random.randint(1, 255),
+        datetime.datetime.now(),
+        random.choice([200, 301, 400, 401, 403, 404, 405, 500]),
+        random.randint(1, 1024)
+    ))
+    sys.stdout.flush()
