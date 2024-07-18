@@ -1,9 +1,8 @@
 #!/usr/bin/python3
 """rotate a 2d matrix module"""
-from typing import List
 
 
-def rotate_2d_matrix(matrix: List[List[int]]):
+def rotate_2d_matrix(matrix):
     """rotate 2d matrix"""
     N = len(matrix)
     new_m = []
