@@ -11,7 +11,6 @@ def makeChange(coins: List[int], total: int) -> int:
     num_of_coins = 0
 
     coins = sorted(coins, reverse=True)
-    print(coins)
     for i in range(len(coins)):
         if total == 0:
             break
